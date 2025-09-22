@@ -1,1 +1,23 @@
+name: Tmate SSH Session
 
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 0 * * *"
+
+jobs:
+  tmate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
+        with:
+          limit-access-to-actor: true   # Chỉ owner repo mở được, tăng bảo mật
+
+      - name: Keep Alive
+        run: |
+          echo "Session tmate sẽ giữ tối đa 6 tiếng"
+          for i in {1..72}; do
+            echo "Still alive at $(date)"
+            sleep 300
+          done
