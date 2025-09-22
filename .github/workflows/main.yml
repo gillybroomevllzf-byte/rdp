@@ -12,7 +12,7 @@ jobs:
       - name: Setup tmate session
         uses: mxschmitt/action-tmate@v3
         with:
-          limit-access-to-actor: true   # Chỉ owner repo mở được, tăng bảo mật
+          limit-access-to-actor: false   # Ai có link cũng mở được
 
       - name: Keep Alive
         run: |
